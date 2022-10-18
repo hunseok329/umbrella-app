@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
     private ActivityMainBinding binding;
+    private double lat;
+    private double lon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,13 +62,14 @@ public class MainActivity extends AppCompatActivity {
         Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
 
         if (location != null) {
-            double lat = location.getLatitude();
-            double lon = location.getLongitude();
+            lat = location.getLatitude();
+            lon = location.getLongitude();
             binding.testView.setText("위치 정보" + lat + " = " + lon);
             System.out.println("위도 경도 : " + lat + " = " + lon);
         } else {
             System.out.println("location null");
         }
+
 
         binding.fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -104,5 +107,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
         return NavigationUI.navigateUp(navController, appBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+    public double getLat() {
+        return lat;
     }
 }

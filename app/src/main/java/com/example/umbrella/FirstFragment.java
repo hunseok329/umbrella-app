@@ -1,5 +1,6 @@
 package com.example.umbrella;
 
+import android.app.Activity;
 import android.content.Context;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,6 +19,7 @@ import com.example.umbrella.databinding.FragmentFirstBinding;
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+    private double lat;
 
     @Override
     public View onCreateView(
@@ -26,12 +28,13 @@ public class FirstFragment extends Fragment {
     ) {
         // page binding this FirstFragment
         binding = FragmentFirstBinding.inflate(inflater, container, false);
+        System.out.println("TEST: onCreateView");
         return binding.getRoot();
-
     }
 
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        System.out.println("TEST: onViewCreated");
 
         // go to SecondFragment button
         binding.buttonFirst.setOnClickListener(new View.OnClickListener() {
@@ -41,6 +44,14 @@ public class FirstFragment extends Fragment {
                         .navigate(R.id.action_FirstFragment_to_SecondFragment);
             }
         });
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        lat = ((MainActivity) getActivity()).getLat();
+        binding.testTextView.setText("lat :" + lat);
+        System.out.println("TEST: onStart");
     }
 
     @Override
