@@ -2,24 +2,39 @@ package com.example.umbrella;
 
 import android.app.Activity;
 import android.content.Context;
+import android.icu.text.SimpleDateFormat;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.umbrella.databinding.FragmentFirstBinding;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.Date;
+
 // 페이지 시작
 public class FirstFragment extends Fragment {
 
     private FragmentFirstBinding binding;
+
     private double lat;
+    private double lon;
 
     @Override
     public View onCreateView(
@@ -46,11 +61,24 @@ public class FirstFragment extends Fragment {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onStart() {
         super.onStart();
         lat = ((MainActivity) getActivity()).getLat();
-        binding.testTextView.setText("lat :" + lat);
+        lon = ((MainActivity) getActivity()).getLon();
+
+//        int[] grid = mapToGrid(lat, lon);
+
+//        try {
+//            String result = getWeatherData(grid[0], grid[1]);
+//            binding.testTextView2.setText(result);
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        binding.testTextView.setText("xlat =" + grid[0] + " xlon=" + grid[1]);
+
         System.out.println("TEST: onStart");
     }
 

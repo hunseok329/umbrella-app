@@ -21,10 +21,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="this is test text"
-        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        app:layout_constraintBottom_toTopOf="@+id/testTextView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@id/textview_first"
+        />
+    <TextView
+        android:id="@+id/testTextView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="this is test text2"
+        app:layout_constraintBottom_toTopOf="@+id/button_first"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/testTextView"
         />
 
     <Button
