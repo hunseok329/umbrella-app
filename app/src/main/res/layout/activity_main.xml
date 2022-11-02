@@ -20,15 +20,13 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/testView"
-        android:text="testview"
-        android:layout_width="391dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="200dp">
 
-    </androidx.appcompat.widget.AppCompatTextView>
-    <include layout="@layout/content_main" />
+    <include
+        android:id="@+id/include"
+        layout="@layout/content_main"
+        android:layout_width="match_parent"
+        android:layout_height="308dp"
+        android:layout_gravity="bottom" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
@@ -38,5 +36,33 @@
         android:layout_marginEnd="@dimen/fab_margin"
         android:layout_marginBottom="16dp"
         app:srcCompat="@android:drawable/ic_dialog_email" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="185dp"
+        android:layout_height="220dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="?attr/actionBarSize"
+        app:srcCompat="@drawable/sun" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/testView"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_horizontal"
+        android:text="testview"
+        app:layout_anchor="@+id/include"
+        app:layout_anchorGravity="top|center">
+
+    </androidx.appcompat.widget.AppCompatTextView>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        app:layout_anchor="@+id/imageView"
+        app:layout_anchorGravity="start|bottom" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
